@@ -4,142 +4,99 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
   return (
-    <div className="w-full bg-[#111] text-white py-20 px-6 md:px-16">
-      {/* Page Title */}
-      <div className="text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section className="w-full min-h-screen bg-gradient-to-br from-[#0f051d] via-[#090917] to-[#02010a] text-white px-6 md:px-20 py-32 font-sans relative overflow-hidden">
+      {/* Glowing Background Blobs */}
+      <div className="absolute w-[450px] h-[450px] bg-purple-600/20 blur-[180px] top-[-100px] left-[-100px] rounded-full" />
+      <div className="absolute w-[400px] h-[400px] bg-cyan-500/20 blur-[150px] bottom-[-100px] right-[-80px] rounded-full" />
+
+      <div className="grid lg:grid-cols-2 gap-24 items-center relative z-10">
+        {/* Left Panel */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold"
+          className="space-y-10"
         >
-          GET IN TOUCH
-        </motion.h2>
-        <div className="w-16 h-1 bg-red-600 rounded-full mt-4 mb-4 mx-auto" />
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          We're here to help. Whether you're ready to start a project or just exploring — reach out and say hi!
-        </p>
-      </div>
-
-      {/* Hero Image */}
-      <div className="relative mb-20 rounded-xl overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200&auto=format&fit=crop&q=60"
-          alt="Dark Interior Design"
-          className="w-full h-[500px] object-cover opacity-30"
-        />
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-center px-6">
-          <h3 className="text-3xl md:text-4xl font-bold">We’d Love to Hear From You</h3>
-          <p className="text-gray-300 mt-4 max-w-xl">
-            Contact us anytime for sales inquiries, support requests, or just to say hello.
+          <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-white drop-shadow-md">
+            Let's <span className="text-cyan-400">connect</span> & <br />
+            <span className="text-purple-400">collaborate.</span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-md">
+            Got a bold idea or just need help getting started? We're ready.
           </p>
-        </div>
-      </div>
 
-      {/* Contact Form & Info */}
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mb-24">
-        {/* Contact Form */}
-        <div className="bg-[#1c1c1c] p-10 rounded-xl shadow-md border border-gray-800">
-          <h3 className="text-2xl font-semibold mb-6">Send us a message</h3>
+          <div className="space-y-8">
+            {[
+              {
+                icon: <Mail className="text-cyan-400" size={26} />,
+                title: "Mail Us",
+                info: "hello@techfarm.com",
+              },
+              {
+                icon: <Phone className="text-cyan-400" size={26} />,
+                title: "Call Us",
+                info: "+91 00000000",
+              },
+              {
+                icon: <MapPin className="text-cyan-400" size={26} />,
+                title: "Visit Us",
+                info: "Chandigarh, Mohali",
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-start gap-4">
+                {item.icon}
+                <div>
+                  <p className="font-semibold">{item.title}</p>
+                  <p className="text-gray-400 text-sm">{item.info}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Right Panel - Form */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-white/5 backdrop-blur-md p-10 md:p-14 rounded-3xl border border-white/10 shadow-[0_0_30px_rgba(0,255,255,0.08)]"
+        >
+          <h3 className="text-2xl font-semibold mb-8 text-white">Contact Form</h3>
           <form className="space-y-6">
+            {["Name", "Email"].map((label, idx) => (
+              <div key={idx}>
+                <label className="block text-sm text-gray-300 mb-2">{label}</label>
+                <input
+                  type={label.toLowerCase()}
+                  className="w-full bg-black/40 border border-cyan-600/30 rounded-lg px-5 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/70"
+                  placeholder={`Enter your ${label.toLowerCase()}`}
+                />
+              </div>
+            ))}
             <div>
-              <label className="block text-gray-400 mb-2 font-medium">Name</label>
-              <input
-                type="text"
-                className="w-full p-4 bg-black border border-gray-700 text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition"
-                placeholder="Enter your name"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-400 mb-2 font-medium">Email</label>
-              <input
-                type="email"
-                className="w-full p-4 bg-black border border-gray-700 text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-400 mb-2 font-medium">Message</label>
+              <label className="block text-sm text-gray-300 mb-2">Message</label>
               <textarea
-                rows="4"
-                className="w-full p-4 bg-black border border-gray-700 text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition"
-                placeholder="Write your message"
-                required
+                rows="5"
+                className="w-full bg-black/40 border border-cyan-600/30 rounded-lg px-5 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/70"
+                placeholder="Write your message..."
               />
             </div>
             <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full py-3 px-6 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition"
+              className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:opacity-90 transition py-3 rounded-xl font-semibold text-white shadow-lg"
             >
               Send Message
             </motion.button>
           </form>
-        </div>
-
-        {/* Contact Info */}
-        <div className="flex flex-col gap-8 justify-center">
-          {/* Sales */}
-          <div className="flex items-start gap-4">
-            <Mail className="text-red-500 mt-1" size={28} />
-            <div>
-              <h4 className="text-lg font-semibold">Chat to Sales</h4>
-              <p className="text-gray-400">Speak to our friendly team.</p>
-              <p className="text-red-400 font-medium">sales@techfarm.com</p>
-            </div>
-          </div>
-
-          {/* Support */}
-          <div className="flex items-start gap-4">
-            <Mail className="text-red-500 mt-1" size={28} />
-            <div>
-              <h4 className="text-lg font-semibold">Chat to Support</h4>
-              <p className="text-gray-400">We're here to help.</p>
-              <p className="text-red-400 font-medium">support@techfarm.com</p>
-            </div>
-          </div>
-
-          {/* Address */}
-          <div className="flex items-start gap-4">
-            <MapPin className="text-red-500 mt-1" size={28} />
-            <div>
-              <h4 className="text-lg font-semibold">Visit Us</h4>
-              <p className="text-gray-400">Chandigarh ,Mohali</p>
-              <a
-                href="https://maps.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-red-400 font-medium hover:underline"
-              >
-                View on Google Maps
-              </a>
-            </div>
-          </div>
-
-          {/* Phone */}
-          <div className="flex items-start gap-4">
-            <Phone className="text-red-500 mt-1" size={28} />
-            <div>
-              <h4 className="text-lg font-semibold">Call Us</h4>
-              <p className="text-gray-400">Mon–Fri from 8am to 5pm</p>
-              <p className="text-red-400 font-medium">+91 00000000</p>
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
-            <footer className="mt-32 border-t border-gray-700 pt-10 text-center text-gray-500 text-sm">
-        <div className="mb-4 flex justify-center space-x-4">
-          <a href="#" className="hover:text-white transition">Twitter</a>
-          <a href="#" className="hover:text-white transition">LinkedIn</a>
-          <a href="#" className="hover:text-white transition">GitHub</a>
-        </div>
+      <footer className="mt-32 text-center text-gray-500 text-sm relative z-10">
         <p>© {new Date().getFullYear()} Tech Farm. All rights reserved.</p>
-        <p className="mt-1">Crafted with ❤️ by Pandit Ji.</p>
+        <p className="mt-1">Crafted with ⚡ by Pandit Ji.</p>
       </footer>
-    </div>
+    </section>
   );
 };
 

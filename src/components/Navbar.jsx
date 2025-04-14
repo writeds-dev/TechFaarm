@@ -29,11 +29,9 @@ const Navbar = () => {
         {/* Logo */}
         <motion.span whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
           <Link to="/" className="text-2xl font-bold text-gray-900 cursor-pointer">
-            TechFarm
+            TechFaarm
           </Link>
         </motion.span>
-
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-10 text-lg">
           <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
             <Link to="/" className="flex items-center gap-2 text-gray-700 hover:text-black transition">
@@ -65,7 +63,7 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
+        
         <motion.div
           className="md:hidden cursor-pointer text-3xl text-gray-800"
           onClick={toggleMenu}
@@ -76,7 +74,7 @@ const Navbar = () => {
         </motion.div>
       </div>
 
-      {/* Mobile Navigation Menu */}
+    
       {isMenuOpen && (
         <div className="absolute top-0 left-0 w-full h-screen bg-white text-gray-800 z-50 flex flex-col items-center justify-center space-y-6 md:hidden transition">
 
