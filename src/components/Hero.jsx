@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="text-4xl md:text-8xl tracking-tight md:leading-[7rem] w-full h-[70vh] flex flex-col items-start justify-center px-9 md:px-32 font-normal md:font-light">
+    <div className="text-4xl md:text-8xl mt-10 tracking-tight md:leading-[7rem] w-full h-[70vh] flex flex-col items-start justify-center px-9 md:px-32 font-normal md:font-light">
       <div>We are</div>
       <div className="flex items-center">
         <div className="h-12 md:h-24 w-20 md:w-36 rounded-full overflow-hidden">
